@@ -70,7 +70,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-1',
       title: 'استيكر الكرف المعتمد',
       caption: 'نظرة "شفت الرسالة وهرد عليك في التوقيت المناسب بعد يومين"',
-      imgUrl: getMediaUrl('media/WA_1790767973270.jpeg'),
+      imgUrl: getMediaUrl('SmartSelect_٢٠٢٦١٠٠١_١١٠٩٢٢_WhatsApp.jpg'),
       soundType: 'pop',
       tags: ['كرف', 'واتساب', 'وزير الخارجية']
     },
@@ -78,7 +78,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-2',
       title: 'استيكر البروفيسور',
       caption: 'لما يبعت ريلز الساعة 3 الفجر والكل نايم',
-      imgUrl: getMediaUrl('media/1790768480477.jpg'),
+      imgUrl: getMediaUrl('SmartSelect_٢٠٢٦١٠٠١_١١٠٩٣٥_WhatsApp.jpg'),
       soundType: 'blast',
       tags: ['ريلز', 'البروفيسور', 'ضحك']
     },
@@ -86,7 +86,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-3',
       title: 'استيكر الشياكة والطلّة',
       caption: 'لما يتأخر ساعتين ويقولك دقيقة وأكون عندك',
-      imgUrl: getMediaUrl('media/IMG-20260607-WA0003.jpg'),
+      imgUrl: getMediaUrl('SmartSelect_٢٠٢٦١٠٠١_١١١١١٤_WhatsApp.jpg'),
       soundType: 'pop',
       tags: ['في الطريق', 'شياكة', 'صاحبي']
     },
@@ -94,7 +94,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-4',
       title: 'استيكر الجدعنة والرجولة',
       caption: 'وقت الجد والشدة تلاقيه في ضهرك دايماً',
-      imgUrl: getMediaUrl('media/IMG-20260923-WA0037(1).jpg'),
+      imgUrl: getMediaUrl('SmartSelect_٢٠٢٦١٠٠١_١١١٢٢٧_WhatsApp.jpg'),
       soundType: 'blast',
       tags: ['رجولة', 'جدعنة', 'أخويا']
     },
@@ -102,7 +102,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-5',
       title: 'استيكر الضحكة الرايقة',
       caption: 'ضحكته اللي بتعدل المزاج في عز الخنقة',
-      imgUrl: getMediaUrl('media/IMG-20260501-WA0040.jpg'),
+      imgUrl: getMediaUrl('SmartSelect_٢٠٢٦١٠٠١_١١١٤٢٨_WhatsApp.jpg'),
       soundType: 'horn',
       tags: ['ضحك', 'روقان', 'عشرة عمر']
     },
@@ -110,7 +110,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-6',
       title: 'استيكر العفوية الطبيعية',
       caption: 'صاحب القلب الأبيض بدون فلاتر ولا لف ودوران',
-      imgUrl: getMediaUrl('media/IMG-20260501-WA0039.jpg'),
+      imgUrl: getMediaUrl('SmartSelect_٢٠٢٦١٠٠١_١١١٥٢٢_WhatsApp.jpg'),
       soundType: 'horn',
       tags: ['عفوية', 'قلب أبيض', 'أبو علاء']
     }
