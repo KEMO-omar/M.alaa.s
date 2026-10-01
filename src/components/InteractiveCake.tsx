@@ -92,7 +92,12 @@ export const InteractiveCake: React.FC = () => {
 
               {/* Candle Body */}
               <div className="w-3.5 h-14 rounded-t-md bg-gradient-to-b from-amber-200 via-amber-400 to-amber-600 shadow-sm relative overflow-hidden border border-amber-300/50">
-                <div className="absolute inset-0 bg-repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(239,68,68,0.4) 4px, rgba(239,68,68,0.4) 8px)"></div>
+                <div 
+                  className="absolute inset-0 opacity-40"
+                  style={{
+                    backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(239,68,68,0.7) 4px, rgba(239,68,68,0.7) 8px)'
+                  }}
+                />
               </div>
             </div>
           ))}

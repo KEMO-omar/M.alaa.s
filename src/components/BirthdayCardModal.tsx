@@ -20,11 +20,25 @@ export const BirthdayCardModal: React.FC<BirthdayCardModalProps> = ({ onClose })
 النهاردة عيد ميلاد الراجل الجدع، صاحب العمر وأكرف بني آدم على الواتساب.. أبو علاء الغالي!
 كل سنة وأنت طيب يا صاحبي وأخويا، وعقبال سنين كتير جاية وإحنا مع بعض، ومحقق كل اللي بتمناه، وتفضل دايماً بدمك الخفيف وذوقك الرايق منور حياتي.. هابي بيرث داي يا شق! ❤️
 — من أخوك: كريم`;
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      triggerBirthdayConfetti();
-      setTimeout(() => setCopied(false), 2000);
-    });
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true);
+        triggerBirthdayConfetti();
+        setTimeout(() => setCopied(false), 2000);
+      }).catch(() => {});
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        triggerBirthdayConfetti();
+        setTimeout(() => setCopied(false), 2000);
+      } catch {}
+      document.body.removeChild(textArea);
+    }
   };
 
   return (

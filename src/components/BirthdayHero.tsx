@@ -40,11 +40,25 @@ export const BirthdayHero: React.FC<BirthdayHeroProps> = ({ onScrollToSection, o
 النهاردة مش مجرد يوم عادي، النهاردة عيد ميلاد عشرة العمر القديمة، الشخص اللي مهما الأيام والمشاغل خادتنا، بيفضل مكانه في القلب ثابت وزي ما هو!
 كل سنة وأنت طيب يا صاحبي وأخويا، وعقبال سنين كتير جاية وإحنا مع بعض ومحقق كل اللي بتتمناه.. هابي بيرث داي يا أبو علاء يا شق! 👑❤️
 — من أخوك: كريم`;
-    navigator.clipboard.writeText(text).then(() => {
-      setCopied(true);
-      triggerStarConfetti();
-      setTimeout(() => setCopied(false), 2500);
-    });
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopied(true);
+        triggerStarConfetti();
+        setTimeout(() => setCopied(false), 2500);
+      }).catch(() => {});
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        triggerStarConfetti();
+        setTimeout(() => setCopied(false), 2500);
+      } catch {}
+      document.body.removeChild(textArea);
+    }
   };
 
   const handlePlayMusic = () => {

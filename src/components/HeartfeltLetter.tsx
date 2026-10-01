@@ -22,16 +22,37 @@ export const HeartfeltLetter: React.FC = () => {
 — من أخوك: كريم`;
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(fullLetter).then(() => {
-      setCopied(true);
-      triggerBirthdayConfetti();
-      setTimeout(() => setCopied(false), 2500);
-    });
+    if (navigator?.clipboard?.writeText) {
+      navigator.clipboard.writeText(fullLetter).then(() => {
+        setCopied(true);
+        triggerBirthdayConfetti();
+        setTimeout(() => setCopied(false), 2500);
+      }).catch(() => {});
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = fullLetter;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        setCopied(true);
+        triggerBirthdayConfetti();
+        setTimeout(() => setCopied(false), 2500);
+      } catch {}
+      document.body.removeChild(textArea);
+    }
   };
 
   const handleOpenWhatsApp = () => {
     const encoded = encodeURIComponent(fullLetter);
-    window.open(`https://api.whatsapp.com/send?text=${encoded}`, '_blank');
+    const url = `https://api.whatsapp.com/send?text=${encoded}`;
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (

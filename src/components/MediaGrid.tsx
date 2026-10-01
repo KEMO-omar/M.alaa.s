@@ -24,19 +24,19 @@ export const MediaGrid: React.FC<MediaGridProps> = ({
 }) => {
   if (media.length === 0) {
     return (
-      <div className="py-20 text-center flex flex-col items-center justify-center bg-slate-900/30 border border-dashed border-slate-800 rounded-3xl p-8 my-6">
-        <div className="w-16 h-16 rounded-2xl bg-slate-800/80 flex items-center justify-center text-slate-500 mb-4">
+      <div className="py-20 text-center flex flex-col items-center justify-center bg-white border border-dashed border-amber-200 rounded-3xl p-8 my-6 shadow-xs">
+        <div className="w-16 h-16 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600 mb-4 border border-amber-200">
           <ImageOff className="w-8 h-8" />
         </div>
-        <h3 className="text-lg font-bold text-slate-200">No media found</h3>
-        <p className="text-sm text-slate-400 max-w-sm mt-1 mb-5">
-          No files matched your selected filters or search terms. Try adjusting your query or resetting filters.
+        <h3 className="text-lg font-black text-stone-900 font-heading">لا توجد عناصر مطابقة</h3>
+        <p className="text-sm text-stone-600 max-w-sm mt-1 mb-5">
+          لم يتم العثور على صور أو فيديوهات مطابقة للبحث أو التاغ المختار.
         </p>
         <button
           onClick={onResetFilters}
-          className="px-4 py-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
+          className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs sm:text-sm transition-all cursor-pointer shadow-sm"
         >
-          Reset All Filters
+          إعادة ضبط كل الفلاتر
         </button>
       </div>
     );
