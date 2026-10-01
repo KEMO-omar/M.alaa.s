@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Crown, Music, Volume2, Share2, Copy, Check, Cake, Flame, Send, Heart } from 'lucide-react';
+import { Sparkles, Crown, Music, Share2, Copy, Check, Cake, Flame, Send, Heart } from 'lucide-react';
 import { triggerBirthdayConfetti, triggerStarConfetti } from '../utils/confetti';
 import { sounds } from '../utils/soundEffects';
 import { getMediaUrl } from '../utils/mediaUrl';
@@ -30,17 +30,26 @@ export const BirthdayHero: React.FC<BirthdayHeroProps> = ({ onScrollToSection, o
     });
   };
 
+  const getShareText = () => {
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://kemo-omar.github.io/M.alaa.s/';
+    return `👑 *عيد ميلاد أجدع راجل وصاحب عمر: محمد أبو علاء* 🎂
+
+📜 *أبيات من القلب:*
+*اسمي من اسمك يابو علاء .. مش بس صديقي أقسم بالله*
+*أخويا وحبيبي يابو علاء .. محبتنا خالصة لوجه الله*
+*زعلنا كتير من بعضينا .. وبنرجع تاني لوحدينا*
+
+النهاردة عيد ميلاد عشرة العمر القديمة، وأكرف كائن على الواتساب بس حبيب قلبي ومكانه محفوظ في القلب! ❤️
+
+ادخل الموقع واحتفل مع أبو علاء، اسمع تراك المزاج واطفي الشمع وشوف الاستيكرات الجديدة:
+👇👇👇
+${shareUrl}
+
+— من أخوك وصاحب عمرك: كريم 🤍`;
+  };
+
   const handleCopyMessage = () => {
-    const text = `النهاردة عيد ميلاد الراجل الجدع، صاحب العمر وأكرف بني آدم على الواتساب.. أبو علاء الغالي! 🎂😂
-
-📜 أبيات من القلب:
-اسمي من اسمك يابو علاء .. مش بس صديقي أقسم بالله
-أخويا وحبيبي يابو علاء .. محبتنا خالصة لوجه الله
-زعلنا كتير من بعضينا .. وبنرجع تاني لوحدينا
-
-النهاردة مش مجرد يوم عادي، النهاردة عيد ميلاد عشرة العمر القديمة، الشخص اللي مهما الأيام والمشاغل خادتنا، بيفضل مكانه في القلب ثابت وزي ما هو!
-كل سنة وأنت طيب يا صاحبي وأخويا، وعقبال سنين كتير جاية وإحنا مع بعض ومحقق كل اللي بتتمناه.. هابي بيرث داي يا أبو علاء يا شق! 👑❤️
-— من أخوك: كريم`;
+    const text = getShareText();
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(text).then(() => {
         setCopied(true);
@@ -60,6 +69,20 @@ export const BirthdayHero: React.FC<BirthdayHeroProps> = ({ onScrollToSection, o
       } catch {}
       document.body.removeChild(textArea);
     }
+  };
+
+  const handleShareWhatsApp = () => {
+    triggerBirthdayConfetti();
+    const text = getShareText();
+    const encoded = encodeURIComponent(text);
+    const url = `https://api.whatsapp.com/send?text=${encoded}`;
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   const handlePlayMusic = () => {
@@ -156,39 +179,49 @@ export const BirthdayHero: React.FC<BirthdayHeroProps> = ({ onScrollToSection, o
         {/* Interactive Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-8">
           
+          {/* Direct WhatsApp Share button */}
+          <button
+            onClick={handleShareWhatsApp}
+            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-emerald-600/25 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            title="إرسال التهنئة فوراً في شات الواتساب بشكل جامد"
+          >
+            <Send className="w-5 h-5" />
+            <span>مشاركة ع الواتساب بشكل جامد 🔥</span>
+          </button>
+
           {/* Confetti blast button */}
           <button
             onClick={() => triggerBirthdayConfetti()}
-            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-amber-500/20 transition-all hover:scale-105 active:scale-95 cursor-pointer"
           >
             <Sparkles className="w-5 h-5 fill-current" />
-            <span>فرقع كونفيتي واحتفل! 🎉</span>
+            <span>فرقع كونفيتي! 🎉</span>
           </button>
 
           {/* Birthday Song chime */}
           <button
             onClick={handlePlayMusic}
-            className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-stone-50 border border-amber-300 text-amber-900 font-bold text-sm sm:text-base shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-white hover:bg-stone-50 border border-amber-300 text-amber-900 font-bold text-sm sm:text-base shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
           >
             <Music className="w-5 h-5 text-amber-600" />
-            <span>عزف نغمة العيد ميلاد 🎵</span>
+            <span>نغمة العيد ميلاد 🎵</span>
           </button>
 
           {/* Copy WhatsApp message */}
           <button
             onClick={handleCopyMessage}
-            className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 font-bold text-sm sm:text-base shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
+            className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-stone-100 hover:bg-stone-200 border border-stone-300 text-stone-800 font-bold text-sm shadow-xs transition-all hover:scale-105 active:scale-95 cursor-pointer"
             title="انسخ رسالة التهنئة عشان تبعتها له في الواتساب"
           >
             {copied ? (
               <>
                 <Check className="w-5 h-5 text-emerald-600" />
-                <span className="text-emerald-700">تم نسخ التهنئة! 🚀</span>
+                <span className="text-emerald-700 font-bold">تم نسخ التهنئة! ✓</span>
               </>
             ) : (
               <>
-                <Copy className="w-5 h-5 text-emerald-600" />
-                <span>انسخ التهنئة للواتس 💬</span>
+                <Copy className="w-5 h-5 text-stone-600" />
+                <span>نسخ الكلام 📋</span>
               </>
             )}
           </button>

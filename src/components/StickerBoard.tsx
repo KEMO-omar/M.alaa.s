@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Smile, Download, Volume2 } from 'lucide-react';
+import { Smile, Download, Volume2, Sparkles, Flame } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import { triggerStarConfetti } from '../utils/confetti';
 import { getMediaUrl } from '../utils/mediaUrl';
@@ -11,16 +11,65 @@ interface StickerItem {
   imgUrl: string;
   soundType: 'horn' | 'pop' | 'blast';
   tags: string[];
+  isNew?: boolean;
 }
 
 export const StickerBoard: React.FC = () => {
   const [activeSticker, setActiveSticker] = useState<string | null>(null);
+  const [filter, setFilter] = useState<'all' | 'new' | 'classic'>('all');
 
   const stickers: StickerItem[] = [
+    // 5 New Stickers Uploaded by the user
+    {
+      id: 'st-new-1',
+      title: 'استيكر القفشة العالية',
+      caption: 'رياكشن الكومنت القاتل أول ما حد يهبد في الجروب',
+      imgUrl: getMediaUrl('media/sticker-new-1.jpg'),
+      soundType: 'blast',
+      tags: ['جديد', 'قفشات', 'واتساب'],
+      isNew: true
+    },
+    {
+      id: 'st-new-2',
+      title: 'استيكر البراءة المصطنعة',
+      caption: 'أنا مالي يا لمبي.. ماكنتش أعرف إنك مستنيني ساعتين!',
+      imgUrl: getMediaUrl('media/sticker-new-2.jpg'),
+      soundType: 'pop',
+      tags: ['جديد', 'براءة', 'ضحك'],
+      isNew: true
+    },
+    {
+      id: 'st-new-3',
+      title: 'استيكر التركيز في المصيبة',
+      caption: 'لما يشوف بلوة بتحصل في الجروب ويعمل نفسه مش شايف',
+      imgUrl: getMediaUrl('media/sticker-new-3.jpg'),
+      soundType: 'horn',
+      tags: ['جديد', 'تركيز', 'ميمز'],
+      isNew: true
+    },
+    {
+      id: 'st-new-4',
+      title: 'استيكر التحفيل الأسطوري',
+      caption: 'الرياكشن الرسمي أول ما حد يقع في شر أعماله ويستاهل',
+      imgUrl: getMediaUrl('media/sticker-new-4.jpg'),
+      soundType: 'blast',
+      tags: ['جديد', 'تحفيل', 'ضحك_للرُكب'],
+      isNew: true
+    },
+    {
+      id: 'st-new-5',
+      title: 'استيكر الروقان والنفضان',
+      caption: 'لما يقفل التليفون وينام والناس كلها قالبه الدنيا عليه',
+      imgUrl: getMediaUrl('media/sticker-new-5.jpg'),
+      soundType: 'pop',
+      tags: ['جديد', 'روقان', 'وزير الخارجية'],
+      isNew: true
+    },
+    // Classic Stickers
     {
       id: 'st-1',
       title: 'استيكر الكرف المعتمد',
-      caption: 'نظرة "شفت الرسالة وهرد عليك في التوقيت المناسب"',
+      caption: 'نظرة "شفت الرسالة وهرد عليك في التوقيت المناسب بعد يومين"',
       imgUrl: getMediaUrl('media/WA_1790767973270.jpeg'),
       soundType: 'pop',
       tags: ['كرف', 'واتساب', 'وزير الخارجية']
@@ -67,6 +116,12 @@ export const StickerBoard: React.FC = () => {
     }
   ];
 
+  const filteredStickers = stickers.filter(s => {
+    if (filter === 'new') return s.isNew;
+    if (filter === 'classic') return !s.isNew;
+    return true;
+  });
+
   const handleTriggerSticker = (s: StickerItem) => {
     setActiveSticker(s.id);
     if (s.soundType === 'horn') sounds.playHorn();
@@ -88,7 +143,7 @@ export const StickerBoard: React.FC = () => {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       
       {/* Section Header */}
       <div className="text-center mb-8">
@@ -96,16 +151,51 @@ export const StickerBoard: React.FC = () => {
           <Smile className="w-4 h-4 text-cyan-700" /> استيكرات وميمز أبو علاء
         </span>
         <h2 className="text-2xl sm:text-3xl font-black text-stone-900 mt-2 font-heading">
-          لوحة الاستيكرات الأشهر في تاريخ الشات 😂
+          لوحة الاستيكرات الأشهر في تاريخ الشات 😂🔥
         </h2>
         <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-lg mx-auto">
-          اضغط على أي استيكر عشان تسمع التأثير وتشوف سر الاستيكر في الواتساب!
+          اضغط على أي استيكر عشان تسمع التأثير وتشوف سر الاستيكر، وتقدر تحفظه على موبايلك بضغطة واحدة!
         </p>
+
+        {/* Filter Pills */}
+        <div className="flex items-center justify-center gap-2 mt-5">
+          <button
+            onClick={() => setFilter('all')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              filter === 'all'
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
+            }`}
+          >
+            كل الاستيكرات ({stickers.length})
+          </button>
+          <button
+            onClick={() => setFilter('new')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-1 ${
+              filter === 'new'
+                ? 'bg-rose-500 text-white shadow-sm'
+                : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
+            }`}
+          >
+            <Flame className="w-3.5 h-3.5 text-amber-300" />
+            <span>الجديدة فقط ({stickers.filter(s => s.isNew).length})</span>
+          </button>
+          <button
+            onClick={() => setFilter('classic')}
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              filter === 'classic'
+                ? 'bg-stone-800 text-white shadow-sm'
+                : 'bg-white text-stone-600 hover:bg-stone-50 border border-stone-200'
+            }`}
+          >
+            الكلاسيك ({stickers.filter(s => !s.isNew).length})
+          </button>
+        </div>
       </div>
 
       {/* Grid of Interactive Stickers */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-        {stickers.map((s) => {
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5 sm:gap-4">
+        {filteredStickers.map((s) => {
           const isTriggered = activeSticker === s.id;
           return (
             <div
@@ -122,10 +212,19 @@ export const StickerBoard: React.FC = () => {
                 <img
                   src={s.imgUrl}
                   alt={s.title}
+                  loading="lazy"
                   className={`w-full h-full object-cover transition-transform duration-300 ${
                     isTriggered ? 'scale-110 rotate-3' : 'group-hover:scale-105'
                   }`}
                 />
+
+                {s.isNew && (
+                  <div className="absolute top-1.5 left-1.5">
+                    <span className="px-1.5 py-0.5 rounded-md bg-rose-500 text-white text-[9px] font-black shadow-sm flex items-center gap-0.5">
+                      <Flame className="w-2.5 h-2.5 fill-current" /> جديد
+                    </span>
+                  </div>
+                )}
 
                 <div className="absolute top-1.5 right-1.5">
                   <span className="p-1 rounded-md bg-white/90 backdrop-blur-md text-[10px] text-amber-700 block border border-amber-200 shadow-xs">
@@ -136,7 +235,7 @@ export const StickerBoard: React.FC = () => {
 
               {/* Title & Caption */}
               <div>
-                <h4 className="text-xs font-bold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1">
+                <h4 className="text-xs font-bold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1 font-heading">
                   {s.title}
                 </h4>
                 <p className="text-[11px] text-stone-500 mt-1 line-clamp-2 leading-tight">
@@ -147,7 +246,7 @@ export const StickerBoard: React.FC = () => {
               {/* Download button */}
               <button
                 onClick={(e) => handleDownload(e, s.imgUrl, s.title)}
-                className="mt-2.5 w-full py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-[10px] font-semibold text-stone-700 flex items-center justify-center gap-1 transition-colors cursor-pointer"
+                className="mt-2.5 w-full py-1.5 rounded-lg bg-stone-100 hover:bg-amber-100 hover:text-amber-900 text-[10px] font-semibold text-stone-700 flex items-center justify-center gap-1 transition-colors cursor-pointer"
                 title="تحميل الاستيكر للجهاز"
               >
                 <Download className="w-3 h-3 text-stone-500" />
