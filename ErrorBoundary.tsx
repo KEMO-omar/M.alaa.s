@@ -1,4 +1,5 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ErrorInfo,components
+https://github.com/KEMO-omar/M.alaa.s/tree/main/src/components ReactNode } from 'react';
 import { RotateCcw, AlertTriangle } from 'lucide-react';
 
 interface Props {
