@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Music, Disc, Sparkles, Volume2, Download, Heart } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import { triggerStarConfetti } from '../utils/confetti';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 export const SignatureArtworkSpotlight: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -53,7 +54,7 @@ export const SignatureArtworkSpotlight: React.FC = () => {
             {/* The Main Artwork Image */}
             <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-2xl overflow-hidden border-2 border-amber-300/80 shadow-2xl shadow-amber-900/10 bg-white z-10">
               <img
-                src="/media/artworks-000064279855-q6u7eq-t500x500.jpg"
+                src={getMediaUrl('media/artworks-000064279855-q6u7eq-t500x500.jpg')}
                 alt="شعار ومزاج أبو علاء"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -116,7 +117,7 @@ export const SignatureArtworkSpotlight: React.FC = () => {
               </button>
 
               <a
-                href="/media/artworks-000064279855-q6u7eq-t500x500.jpg"
+                href={getMediaUrl('media/artworks-000064279855-q6u7eq-t500x500.jpg')}
                 download="AboAlaa_Artwork.jpg"
                 className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-white hover:bg-stone-50 border border-stone-200 text-stone-700 text-xs sm:text-sm font-medium transition-colors cursor-pointer"
                 title="تحميل الغلاف بدقته الأصلية"

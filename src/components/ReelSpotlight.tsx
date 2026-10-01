@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { Film, Play, Heart, Download, Volume2, VolumeX, Sparkles } from 'lucide-react';
 import { triggerStarConfetti } from '../utils/confetti';
 import { sounds } from '../utils/soundEffects';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 export const ReelSpotlight: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -69,7 +70,7 @@ export const ReelSpotlight: React.FC = () => {
           {/* Video */}
           <video
             ref={videoRef}
-            src="/media/SmartSelect_20261001_092335_WhatsApp.mp4"
+            src={getMediaUrl('media/SmartSelect_20261001_092335_WhatsApp.mp4')}
             autoPlay
             loop
             muted={isMuted}
@@ -115,7 +116,7 @@ export const ReelSpotlight: React.FC = () => {
             </button>
 
             <a
-              href="/media/SmartSelect_20261001_092335_WhatsApp.mp4"
+              href={getMediaUrl('media/SmartSelect_20261001_092335_WhatsApp.mp4')}
               download="Reel_AboAlaa.mp4"
               className="p-2.5 rounded-full bg-black/50 backdrop-blur-md text-white hover:bg-black/70 transition-colors cursor-pointer"
               title="تحميل الريلز"
@@ -177,7 +178,7 @@ export const ReelSpotlight: React.FC = () => {
 
           <div className="pt-2">
             <a
-              href="/media/SmartSelect_20261001_092335_WhatsApp.mp4"
+              href={getMediaUrl('media/SmartSelect_20261001_092335_WhatsApp.mp4')}
               download
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs sm:text-sm shadow-md transition-colors cursor-pointer"
             >

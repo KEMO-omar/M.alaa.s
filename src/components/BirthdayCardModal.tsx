@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Copy, Check, Crown, Heart } from 'lucide-react';
 import { triggerBirthdayConfetti } from '../utils/confetti';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 interface BirthdayCardModalProps {
   onClose: () => void;
@@ -61,7 +62,7 @@ export const BirthdayCardModal: React.FC<BirthdayCardModalProps> = ({ onClose })
           
           <div className="inline-block p-1 rounded-full bg-gradient-to-tr from-amber-400 via-rose-300 to-amber-500 mb-3 shadow-md shadow-amber-500/20">
             <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white bg-white">
-              <img src="/media/1790768480477.jpg" alt="أبو علاء" className="w-full h-full object-cover" />
+              <img src={getMediaUrl('media/1790768480477.jpg')} alt="أبو علاء" className="w-full h-full object-cover" />
             </div>
           </div>
 

@@ -3,6 +3,7 @@ import { Sparkles, Film, Image as ImageIcon, Cake, Heart, Play, Smile, MessageCi
 import { MediaItem } from '../types';
 import { triggerBirthdayConfetti } from '../utils/confetti';
 import { sounds } from '../utils/soundEffects';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 interface HeaderProps {
   media: MediaItem[];
@@ -38,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 via-rose-300 to-amber-500 p-[2px] shadow-md shadow-amber-500/10 flex-shrink-0">
                   <div className="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden">
                     <img 
-                      src="/media/1790768480477.jpg" 
+                      src={getMediaUrl('media/1790768480477.jpg')} 
                       alt="محمد أبو علاء" 
                       className="w-full h-full object-cover"
                     />

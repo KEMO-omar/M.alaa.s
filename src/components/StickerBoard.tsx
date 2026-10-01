@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Smile, Download, Volume2 } from 'lucide-react';
 import { sounds } from '../utils/soundEffects';
 import { triggerStarConfetti } from '../utils/confetti';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 interface StickerItem {
   id: string;
@@ -20,7 +21,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-1',
       title: 'استيكر الكرف المعتمد',
       caption: 'نظرة "شفت الرسالة وهرد عليك في التوقيت المناسب"',
-      imgUrl: '/media/WA_1790767973270.jpeg',
+      imgUrl: getMediaUrl('media/WA_1790767973270.jpeg'),
       soundType: 'pop',
       tags: ['كرف', 'واتساب', 'وزير الخارجية']
     },
@@ -28,7 +29,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-2',
       title: 'استيكر البروفيسور',
       caption: 'لما يبعت ريلز الساعة 3 الفجر والكل نايم',
-      imgUrl: '/media/1790768480477.jpg',
+      imgUrl: getMediaUrl('media/1790768480477.jpg'),
       soundType: 'blast',
       tags: ['ريلز', 'البروفيسور', 'ضحك']
     },
@@ -36,7 +37,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-3',
       title: 'استيكر الشياكة والطلّة',
       caption: 'لما يتأخر ساعتين ويقولك دقيقة وأكون عندك',
-      imgUrl: '/media/IMG-20260607-WA0003.jpg',
+      imgUrl: getMediaUrl('media/IMG-20260607-WA0003.jpg'),
       soundType: 'pop',
       tags: ['في الطريق', 'شياكة', 'صاحبي']
     },
@@ -44,7 +45,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-4',
       title: 'استيكر الجدعنة والرجولة',
       caption: 'وقت الجد والشدة تلاقيه في ضهرك دايماً',
-      imgUrl: '/media/IMG-20260923-WA0037(1).jpg',
+      imgUrl: getMediaUrl('media/IMG-20260923-WA0037(1).jpg'),
       soundType: 'blast',
       tags: ['رجولة', 'جدعنة', 'أخويا']
     },
@@ -52,7 +53,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-5',
       title: 'استيكر الضحكة الرايقة',
       caption: 'ضحكته اللي بتعدل المزاج في عز الخنقة',
-      imgUrl: '/media/IMG-20260501-WA0040.jpg',
+      imgUrl: getMediaUrl('media/IMG-20260501-WA0040.jpg'),
       soundType: 'horn',
       tags: ['ضحك', 'روقان', 'عشرة عمر']
     },
@@ -60,7 +61,7 @@ export const StickerBoard: React.FC = () => {
       id: 'st-6',
       title: 'استيكر العفوية الطبيعية',
       caption: 'صاحب القلب الأبيض بدون فلاتر ولا لف ودوران',
-      imgUrl: '/media/IMG-20260501-WA0039.jpg',
+      imgUrl: getMediaUrl('media/IMG-20260501-WA0039.jpg'),
       soundType: 'horn',
       tags: ['عفوية', 'قلب أبيض', 'أبو علاء']
     }

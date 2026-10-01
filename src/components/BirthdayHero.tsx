@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Crown, Music, Volume2, Share2, Copy, Check, Cake, Flame, Send, Heart } from 'lucide-react';
 import { triggerBirthdayConfetti, triggerStarConfetti } from '../utils/confetti';
 import { sounds } from '../utils/soundEffects';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 interface BirthdayHeroProps {
   onScrollToSection: (id: string) => void;
@@ -105,7 +106,7 @@ export const BirthdayHero: React.FC<BirthdayHeroProps> = ({ onScrollToSection, o
           <div className="relative w-36 h-36 sm:w-44 sm:h-44 mx-auto rounded-full p-1.5 bg-gradient-to-tr from-amber-400 via-rose-300 to-amber-500 shadow-xl shadow-amber-500/20 animate-pulse-glow">
             <div className="w-full h-full rounded-full overflow-hidden bg-white border-2 border-white shadow-inner">
               <img
-                src="/media/1790768480477.jpg"
+                src={getMediaUrl('media/1790768480477.jpg')}
                 alt="محمد أبو علاء"
                 className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
               />

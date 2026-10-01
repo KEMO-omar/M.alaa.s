@@ -1,11 +1,12 @@
 import { MediaItem } from '../types';
+import { getMediaUrl } from '../utils/mediaUrl';
 
 export const INITIAL_MEDIA: MediaItem[] = [
   {
     id: 'media-1',
     title: 'طلة وهيبة وشياكة السنين',
     filename: 'IMG-20260607-WA0003.jpg',
-    url: '/media/IMG-20260607-WA0003.jpg',
+    url: getMediaUrl('media/IMG-20260607-WA0003.jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '1204 × 1600 px',
@@ -20,7 +21,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-2',
     title: 'ضحكة من القلب بتعدل اليوم',
     filename: 'IMG-20260501-WA0040.jpg',
-    url: '/media/IMG-20260501-WA0040.jpg',
+    url: getMediaUrl('media/IMG-20260501-WA0040.jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '1126 × 1600 px',
@@ -35,7 +36,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-3',
     title: 'ريلز الساعة 3 الفجر (معتمدة من البروفيسور) 🎬',
     filename: 'SmartSelect_20261001_092335_WhatsApp.mp4',
-    url: '/media/SmartSelect_20261001_092335_WhatsApp.mp4',
+    url: getMediaUrl('media/SmartSelect_20261001_092335_WhatsApp.mp4'),
     type: 'video',
     category: 'videos',
     dimensions: 'فيديو MP4',
@@ -50,7 +51,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-4',
     title: 'كاريزما الجدعنة وصاحب صاحبه',
     filename: 'IMG-20260923-WA0037(1).jpg',
-    url: '/media/IMG-20260923-WA0037(1).jpg',
+    url: getMediaUrl('media/IMG-20260923-WA0037(1).jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '1200 × 1600 px',
@@ -65,7 +66,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-5',
     title: 'استيكر البروفيسور المعتمد للشات',
     filename: '1790768480477.jpg',
-    url: '/media/1790768480477.jpg',
+    url: getMediaUrl('media/1790768480477.jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '1024 × 1024 px',
@@ -80,7 +81,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-6',
     title: 'قعدة ساعة الغروب وسهرة الصيف',
     filename: 'IMG-20260607-WA0016.jpg',
-    url: '/media/IMG-20260607-WA0016.jpg',
+    url: getMediaUrl('media/IMG-20260607-WA0016.jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '1200 × 1600 px',
@@ -95,7 +96,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-7',
     title: 'عفوية وضحكة طبيعية بدون فلاتر',
     filename: 'IMG-20260501-WA0039.jpg',
-    url: '/media/IMG-20260501-WA0039.jpg',
+    url: getMediaUrl('media/IMG-20260501-WA0039.jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '1204 × 1600 px',
@@ -110,7 +111,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-8',
     title: 'لقطة ستوري طولية وسريعة',
     filename: 'IMG-20260927-WA0076.jpg',
-    url: '/media/IMG-20260927-WA0076.jpg',
+    url: getMediaUrl('media/IMG-20260927-WA0076.jpg'),
     type: 'image',
     category: 'photos',
     dimensions: '720 × 1600 px',
@@ -125,7 +126,7 @@ export const INITIAL_MEDIA: MediaItem[] = [
     id: 'media-9',
     title: 'استيكر الكرف التاريخي (وزير الخارجية)',
     filename: 'WA_1790767973270.jpeg',
-    url: '/media/WA_1790767973270.jpeg',
+    url: getMediaUrl('media/WA_1790767973270.jpeg'),
     type: 'image',
     category: 'photos',
     dimensions: '536 × 623 px',
@@ -134,6 +135,6 @@ export const INITIAL_MEDIA: MediaItem[] = [
     sizeFormatted: '24 KB',
     date: '2026-09-29',
     tags: ['كرف', 'وزير_الخارجية', 'استيكر', 'ضحك'],
-    description: 'رياكشن الكرف الأسطوري لما يشوف الرسالة وعلامتين الصح يزرقّوا وميردش غير بعد يومين!'
+    description: 'رياكشن الكرف الأسطوري لما يشوف الرسالة وععلامتين الصح يزرقّوا وميردش غير بعد يومين!'
   }
 ];
